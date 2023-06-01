@@ -32,8 +32,8 @@ $ pip install jsfuzz
 ```python
 from jsfuzz import inspector
 
+# Default top_k=5 json paths will be returned
 result = inspector.search(payload, "brand")
-result.reverse()
 
 pprint(result)
 ====================
@@ -51,8 +51,7 @@ Returns:
 
 
 ```python
-result = inspector.search(payload, "65")
-result.reverse()
+result = inspector.search(payload, "65", top_k=10)
 
 pprint(result)
 ====================
@@ -60,8 +59,13 @@ pprint(result)
 Returns:
 
 [('$.stock', '65', 30.0),
- ('$.rating', '4.26', 10.0),
+ ('$.rating', '4.26', 20.0),
+ ('$.thumbnail', 'https://i.dummyjson.com/data/products/11/thumbnail.jpg', 0.0),
+ ('$.category', 'fragrances', 0.0),
+ ('$.brand', 'Impression of Acqua Di Gio', 0.0),
  ('$.discountPercentage', '8.4', 0.0),
  ('$.price', '13', 0.0),
- ('$.description', 'Mega Discount, Impression of A...', 0.0)]
+ ('$.description', 'Mega Discount, Impression of A...', 0.0),
+ ('$.title', 'perfume Oil', 0.0),
+ ('$.id', '11', 0.0)]
 ```

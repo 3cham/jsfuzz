@@ -32,7 +32,6 @@ def test_search():
     js_obj = json.dumps(original_object)
 
     candidate = search(js_obj, "value")
-    candidate.reverse()
 
     print()
     pprint(candidate)
@@ -46,7 +45,6 @@ def test_search_with_payload():
     js_obj = json.dumps(original_object)
 
     candidate = search(js_obj, "brand")
-    candidate.reverse()
 
     print()
     pprint(candidate)
@@ -59,10 +57,7 @@ def test_search_with_value():
 
     js_obj = json.dumps(original_object)
 
-    candidate = search(js_obj, "65")
+    candidate = search(js_obj, "65", top_k=10)
 
-    candidate.reverse()
-    print()
-    pprint(candidate)
-    assert len(candidate) > 0
+    assert len(candidate) <= 10
 

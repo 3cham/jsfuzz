@@ -10,9 +10,9 @@ def load(payload: str) -> object:
 def similarity_score(node_path: str, node_value: str, value: str) -> float:
     parts = node_path.split(".")
     # iterate through all the node names along the path and calculate the best match
-    node_path_score = max([fuzz.ratio(part.lower(), value.lower()) for part in parts])
+    node_path_score = max([fuzz.partial_ratio(part.lower(), value.lower()) for part in parts])
 
-    node_value_score = fuzz.ratio(node_value.lower(), value.lower())
+    node_value_score = fuzz.partial_ratio(node_value.lower(), value.lower())
     return 0.7 * node_path_score + 0.3 * node_value_score
 
 
@@ -40,10 +40,10 @@ def traverse(obj: object, path: str, candidates: list, value: str, top_k: int) -
         raise RuntimeError(f"Not supported Type: {type(obj)}")
 
 
-def search(payload: str, value: str) -> list:
+def search(payload: str, value: str, top_k=5) -> list:
     """
     fuzzy search for value inside a json payload
-    the top_k json nodes will be returned based on the similarity scores between this value and
+    the top_k json nodes (default to 5) will be returned based on the similarity scores between this value and
         - the path name to this node
         - the value contained in this node
     :param payload:
@@ -51,9 +51,9 @@ def search(payload: str, value: str) -> list:
     :return:
     """
     candidates = []
-    max_candidates = 5
     obj = load(payload)
-    result = traverse(obj, path="$", candidates=candidates, value=value, top_k=max_candidates)
+    result = traverse(obj, path="$", candidates=candidates, value=value, top_k=top_k)
+    result.reverse()
     return result
 
 
