@@ -45,7 +45,7 @@ def test_search_with_payload():
 
     js_obj = json.dumps(original_object)
 
-    candidate = search(js_obj, "value change date")
+    candidate = search(js_obj, "brand")
     candidate.reverse()
 
     print()
@@ -59,7 +59,7 @@ def test_search_with_value():
 
     js_obj = json.dumps(original_object)
 
-    candidate = search(js_obj, "553706018")
+    candidate = search(js_obj, "65")
 
     candidate.reverse()
     print()
