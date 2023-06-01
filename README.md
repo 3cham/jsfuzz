@@ -1,5 +1,10 @@
 # Fuzzy matching for JSON payload. Find json_path that matches best for your provided value
 
+## Install
+```bash
+$ pip install jsfuzz
+```
+
 ## Examples:
 
 
