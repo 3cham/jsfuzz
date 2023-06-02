@@ -5,6 +5,7 @@ description = "Inspect json data and fuzzy search for values or key names"
 authors = ["Tung Dang <tung.dang@otto.de>"]
 license = "MIT"
 readme = "README.md"
+homepage = "https://github.com/3cham/jsfuzz.git"
 
 [tool.poetry.dependencies]
 python = ">=3.9"
