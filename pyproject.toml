@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "jsfuzz"
-version = "0.1.1"
+version = "1.0.0"
 description = "Inspect json data and fuzzy search for values or key names"
 authors = ["Tung Dang <tung.dang@otto.de>"]
 license = "MIT"

@@ -13,7 +13,7 @@ def similarity_score(node_path: str, node_value: str, value: str) -> float:
     node_path_score = max([fuzz.partial_ratio(part.lower(), value.lower()) for part in parts])
 
     node_value_score = fuzz.partial_ratio(node_value.lower(), value.lower())
-    return 0.7 * node_path_score + 0.3 * node_value_score
+    return max(node_path_score, node_value_score)
 
 
 def traverse(obj: object, path: str, candidates: list, value: str, top_k: int) -> list:
